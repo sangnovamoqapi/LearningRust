@@ -1,0 +1,2 @@
+1. Using slicing we can tie the output of data to the original value until read, as we pass the immutable reference of the ownere to the function, we essentially cannot mutate the owner value until the output of the function is read
+2. This essentially removes an entire class of bugs.
