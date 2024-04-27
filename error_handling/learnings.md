@@ -3,3 +3,6 @@
 3. unwrap() method will return the Ok(T) on success and call panic! on error, we can use expect() also in same way but with message on panic!, and is often chosen over unwrap()
 4. '?' basically returns Ok(T) from the expr on success and Err will be returned from whole function on failure it helps in removing boilerplate code
 5. Error values when using '?' calls from method of From trait which converts one error to the error type returned by the function(not sure how the parent class type of error could work though or are there no hierarchy of errors in rust?) 
+6. While prototyping some concept for error handling unwrap and expect methods are clear markers to later handle exceptions in more robust way
+7. calling panic is appropriate when user from library is passing some data and it is insecure or harmful to continue the binaries functions instead of returning Result<T,E> OR we are calling external code and have no way of fixing invalid state returned
+8. functions has contracts with input to be certain data type and range and size if contract is violated it should call panic
