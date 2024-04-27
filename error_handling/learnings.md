@@ -1,0 +1,5 @@
+1. Two types: Recoverable and Not - Recoverable, Most languages deal with both of them with exceptions, but rust has type of Result<T,E> for recoverable and panic! macro that exits program
+2. Unwinding stack of functions adds overload to the compiled binaries; hence on panic we can abort directly without stacktrace if required with essential config
+3. unwrap() method will return the Ok(T) on success and call panic! on error, we can use expect() also in same way but with message on panic!, and is often chosen over unwrap()
+4. '?' basically returns Ok(T) from the expr on success and Err will be returned from whole function on failure it helps in removing boilerplate code
+5. Error values when using '?' calls from method of From trait which converts one error to the error type returned by the function(not sure how the parent class type of error could work though or are there no hierarchy of errors in rust?) 
