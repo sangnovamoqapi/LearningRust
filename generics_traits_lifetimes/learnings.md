@@ -1,0 +1,2 @@
+1. we can constrain the generic types in rust by using traits to ensure comparison or mutation of the generic type is certainly not corrupting
+2. There is overhead cost for generics as compiler does reverse lookup and generates code for concrete types from where the function is called. But what about call from libraries?
