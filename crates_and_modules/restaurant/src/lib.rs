@@ -1,7 +1,10 @@
 use std::{cmp::Ordering, io};
 
 mod front_of_house {
-    mod serving {
+    pub mod hosting {
+        pub fn add_to_waitlist() {}
+    }
+    pub mod serving {
         fn take_order() {}  
 
         fn serve_order() {}
