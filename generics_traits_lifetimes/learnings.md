@@ -42,5 +42,6 @@ Here ToString is a trait defining methods like to_string in rust library and exp
         }
     }
     This does not work as Rust cannot tell which reference we are returning as its necessary for rust to know the lifetime of the variable.
+    6. Rust compiler could infer lifetimes relationships if they are same, need to follow set of rules called lifetime elision rules
 
 </details>
