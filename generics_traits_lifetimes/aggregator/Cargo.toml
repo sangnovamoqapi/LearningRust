@@ -1,5 +1,5 @@
 [package]
-name = "generics_traits_lifetimes"
+name = "aggregator"
 version = "0.1.0"
 edition = "2021"
 
