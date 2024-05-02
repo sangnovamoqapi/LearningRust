@@ -28,3 +28,19 @@ useful in Closures and iterators
 Here ToString is a trait defining methods like to_string in rust library and expecting type which implements trait Display so 3.to_string() works as numbers type internally would be implementing Display trait, but for this to work number type must also be implementing ToString trait, this trait features achives blanket implementation and thus achieves polymorphism
 13. Rust favors composition over inheritance and achieves code reuse through traits and generics.
 14. Traits and trait bounds let us write code that uses generic type parameters to reduce duplication but also specify to the compiler that we want the generic type to have particular behavior.
+<details>
+  <summary>References Lifetimes</summary>
+    1. Every reference in Rust has a lifetime, which being scope until its valid
+    2. Like types they are usually inferred, but we must annotate when lifetimes could be related in different ways.
+    3. Aim being to avoid dangling references.
+    4. if we assign reference of an inner scope to outer scope variable and use it, the borrow checker will give compile time error as lifetime of the inner scope variable is less then the outer scope variable who borrowed the reference.
+    5. fn longest(x: &str, y: &str) -> &str {
+        if x.len() > y.len() {
+            x
+        } else {
+            y
+        }
+    }
+    This does not work as Rust cannot tell which reference we are returning as its necessary for rust to know the lifetime of the variable.
+
+</details>

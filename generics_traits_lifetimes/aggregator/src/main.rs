@@ -1,11 +1,9 @@
-use aggregator::{Summary, Tweet, NewsArticle};
+use aggregator::{NewsArticle, Summary, Tweet};
 
 fn main() {
     let tweet = Tweet {
         username: String::from("horse_ebooks"),
-        content: String::from(
-            "of course, as you probably already know, people",
-        ),
+        content: String::from("of course, as you probably already know, people"),
         reply: false,
         retweet: false,
     };
@@ -16,14 +14,22 @@ fn main() {
         headline: String::from("Drizzles devoured rain hopes, Heat wave continues"),
         location: String::from("Bengaluru"),
         author: String::from("Some person"),
-        content: String::from("Lorem ipsum")
+        content: String::from("Lorem ipsum"),
     };
     println!("Breaking news: {}", article.summarize());
 
     notify(&article);
-    let x = Pair::new(3,5);
+    let x = Pair::new(3, 5);
 
-    x.cmp_display()
+    x.cmp_display();
+
+    {
+        let x = 5; // ----------+-- 'b
+                   //           |
+        let r = &x; // --+-- 'a  |
+                    //   |       |
+        println!("r: {}", r);
+    }
 }
 
 pub fn notify(item: &impl Summary) {
