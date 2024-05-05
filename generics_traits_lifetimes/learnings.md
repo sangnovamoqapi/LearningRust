@@ -43,5 +43,27 @@ Here ToString is a trait defining methods like to_string in rust library and exp
     }
     This does not work as Rust cannot tell which reference we are returning as its necessary for rust to know the lifetime of the variable.
     6. Rust compiler could infer lifetimes relationships if they are same, need to follow set of rules called lifetime elision rules
+    7. Just as functions accept generic types for parameters, they can accept references with any lifetime by specifying a generic lifetime parameter
+    Syntax: &'a i32 or &'a mut i32
+    8. Note, we just annotate lifetimes and not change any, borrow checker will adhere to and will reject if not followed the aforementioned constraints. We onl specify the lifetime of returned reference is same as smaller of the lifetimes of parameters.
+    9. Lifetimes become the part of the function signature just like the types, thus it cannot be called from a place where dangling reference could have been inferred.
+    10. This is helpful for compiler to point to our error more precisely rather then in a chain of downstream events getting called.
+    11. Valid code: 
+    let string1 = String::from("long string is long");
+
+    {
+        let string2 = String::from("xyz");
+        let result = longest(string1.as_str(), string2.as_str());
+        println!("The longest string is {}", result);
+    }
+    Invalid code: 
+    let string1 = String::from("long string is long");
+    let result;
+    {
+        let string2 = String::from("xyz");
+        result = longest(string1.as_str(), string2.as_str());
+    }
+    println!("The longest string is {}", result);
+    12. If x and y have different lifetimes, the function will return a reference that lives for as long as both x and y are valid.
 
 </details>
